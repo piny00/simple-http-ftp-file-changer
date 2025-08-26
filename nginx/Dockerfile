@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-RUN apk add --no-cache nginx-mod-http-dav-ext apache2-utils
+RUN apk add --no-cache nginx-mod-http-dav-ext apache2-utils inotify-tools
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY .htpasswd /etc/nginx/.htpasswd
