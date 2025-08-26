@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  webdav:
+    build: ./nginx
+    container_name: nginx-dav
+    ports:
+      - "8080:80"
+    volumes:
+      - uploads:/usr/share/nginx/html/uploads
+    restart: unless-stopped
+
+  ftp:
+    build: ./vsftpd
+    container_name: vsftpd
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    volumes:
+      - uploads:/home/vsftpd/anon/uploads
+    restart: unless-stopped
+
+volumes:
+  uploads:
+
