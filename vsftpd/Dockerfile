@@ -1,9 +1,11 @@
 FROM alpine:latest
 RUN apk add --no-cache vsftpd
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
-RUN mkdir -p /home/vsftpd/anon/uploads \
-    && chown -R ftp:ftp /home/vsftpd/anon/uploads \
-    && chmod 777 /home/vsftpd/anon/uploads
+
+RUN adduser -D -h /home/vsftpd/hostware hostware \
+    && echo "hostware:hostware" | chpasswd \
+    && mkdir -p /home/vsftpd/hostware/uploads \
+    && chmod -R 777 /home/vsftpd/hostware
 
 EXPOSE 21
 EXPOSE 21100-21110
