@@ -1,5 +1,5 @@
 #!/bin/sh
-chown -R ftp:ftp /home/vsftpd/anon/uploads
-chmod 777 /home/vsftpd/anon/uploads
+chown -R hostware:hostware /home/vsftpd/hostware/uploads
+chmod 777 /home/vsftpd/hostware/uploads
 exec /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
 
